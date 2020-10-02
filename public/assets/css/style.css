@@ -1,0 +1,225 @@
+body{
+    background: #f1f1f1;
+    padding: 60px 0 0 0;
+    background-image: url("../img/bg.jpg");
+    height: 100%;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center top;
+    background-attachment: fixed;
+    background-size: auto;
+}
+a:hover{-webkit-transition:all ease-out .15s;-moz-transition:all ease-out .15s;-o-transition:all ease-out .15s;transition:all ease-out .15s;-webkit-transition:all ease-in .15s;-moz-transition:all ease-in .15s;-o-transition:all ease-in .15s;transition:all ease-in .15s}
+.vertical-middle{-webkit-box-align:center;-ms-flex-align:center;align-items:center}
+
+.container {padding: 0 30px}
+
+/*CSS For Websocket*/
+#home{width:100%;height:100vh;position:relative}
+
+.header {
+    width: 100%;
+    overflow: hidden;
+    margin: 0 0 30px 0;
+    position: fixed;
+    top: 0;
+    z-index: 99999;
+    width: 100%;
+    left: 0;
+    height: 55px;
+    -webkit-box-shadow: 0 1px 5px rgba(0,0,0,0.25);
+    -moz-box-shadow: 0 1px 5px rgba(0,0,0,0.25);
+    box-shadow: 0 1px 5px rgba(0,0,0,0.25);
+    -webkit-transition: all .15s ease-out .15s;
+    -moz-transition: all .15s ease-out .15s;
+    -o-transition: all .15s ease-out .15s;
+    transition: all .15s ease-out .15s;
+    -webkit-transition: all .15s ease-in .15s;
+    -moz-transition: all .15s ease-in .15s;
+    -o-transition: all .15s ease-in .15s;
+    transition: all .15s ease-in .15s;
+    background-color: #e02645;
+}
+.top-nav .logo{float:left;width:150px}
+.top-nav{position:fixed;top:0;z-index:999;width:100%;left:0;height:70px;-webkit-box-shadow:0 1px 5px rgba(0,0,0,0.25);-moz-box-shadow:0 1px 5px rgba(0,0,0,0.25);box-shadow:0 1px 5px rgba(0,0,0,0.25);-webkit-transition:all .15s ease-out .15s;-moz-transition:all .15s ease-out .15s;-o-transition:all .15s ease-out .15s;transition:all .15s ease-out .15s;-webkit-transition:all .15s ease-in .15s;-moz-transition:all .15s ease-in .15s;-o-transition:all .15s ease-in .15s;transition:all .15s ease-in .15s}
+.transparent{box-shadow:none}
+.top-nav{padding:15px 0 0;box-shadow:0 1px 3px 0 rgba(0,0,0,.13);background-color:#fff}
+.top-nav .navigation{float:right}
+.navigation button{margin:0}
+.navbar-toggle .icon-bar{background-color:#fff;background-color:#fb4456}
+.navMenu{float:right;padding: 0;}
+.navMenu ul{float:left;margin: 0;}
+.navMenu ul li{display:inline-block}
+.navMenu ul li a.active, .navMenu ul li a:hover {color: #e03b45;background-color: #fff;}
+.navMenu ul li a{color: #ffffff;padding: 19px 15px;font-size: 16px;text-transform:uppercase;display:inline-block;text-decoration: none;margin: 0 0px 0 5px;}
+
+
+.page--title {}
+
+
+-webkit-@keyframes spin {
+            -webkit-from {
+                -webkit-transform: rotate(0deg);
+                -ms-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            -webkit-to {
+                -webkit-transform: rotate(360deg);
+                -ms-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+
+@-webkit-keyframes spin {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+.bt-spinner {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 4px solid #222;
+    border-top-color: #009688;
+    -webkit-animation: 1s spin linear infinite;
+    animation: 1s spin linear infinite;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin: -35px 0 0 -35px;
+}
+
+
+@media (max-width:768px) {
+    .container {padding: 0 15px}
+}
+@media (max-width:1200px) and (min-width:240px) {
+
+}
+@media (max-width:600px) and (min-width:240px) {
+
+}
+
+.form {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #2c3345;
+    display: flex;
+    flex-direction: column;
+    margin: 72px auto;
+    width: 100%;
+    max-width: 752px;
+}
+.form--wrapper {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    margin: 0;
+    padding: 0 38px;
+    list-style: none;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+.header-text {
+    padding: 40px 52px;
+    /* font-family: "Inter", sans-serif; */
+    border-bottom: 1px solid #d7d8e1;
+}
+.header-text h1 {}
+.form--group {
+    margin-top: 28px;
+    text-align: left;
+    width: 100%;
+}
+.form--group label {
+    /* width: 100%; */
+    margin-bottom: 14px;
+    display: block;
+}
+.form--group input {
+    background-color: #fff;
+    border: 1px solid #c3cad8;
+    color: #2c3345;
+    font-size: 1em;
+    border-radius: 4px;
+    border: 1px solid;
+    display: block;
+    font-size: 16px;
+    padding: 10px 10px;
+}
+
+/*CSS For Customize Date Picker*/
+input[type="date"] {
+    display:block;
+    position:relative;
+    padding:1rem 3.5rem 1rem 0.75rem;
+
+    font-size:1rem;
+    font-family:monospace;
+
+    border:1px solid #8292a2;
+    border-radius:0.25rem;
+    background:
+            white
+            url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='22' viewBox='0 0 20 22'%3E%3Cg fill='none' fill-rule='evenodd' stroke='%23688EBB' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' transform='translate(1 1)'%3E%3Crect width='18' height='18' y='2' rx='2'/%3E%3Cpath d='M13 0L13 4M5 0L5 4M0 8L18 8'/%3E%3C/g%3E%3C/svg%3E")
+            right 1rem
+            center
+            no-repeat;
+
+    cursor:pointer;
+}
+input[type="date"]:focus {
+    outline:none;
+    border-color:#3acfff;
+    box-shadow:0 0 0 0.25rem rgba(0, 120, 250, 0.1);
+}
+
+::-webkit-datetime-edit {}
+::-webkit-datetime-edit-fields-wrapper {}
+::-webkit-datetime-edit-month-field:hover,
+::-webkit-datetime-edit-day-field:hover,
+::-webkit-datetime-edit-year-field:hover {
+    background:rgba(0, 120, 250, 0.1);
+}
+::-webkit-datetime-edit-text {
+    opacity:0;
+}
+::-webkit-clear-button,
+::-webkit-inner-spin-button {
+    display:none;
+}
+::-webkit-calendar-picker-indicator {
+    position:absolute;
+    width:2.5rem;
+    height:100%;
+    top:0;
+    right:0;
+    bottom:0;
+
+    opacity:0;
+    cursor:pointer;
+
+    color:rgba(0, 120, 250, 1);
+    background:rgba(0, 120, 250, 1);
+
+}
+
+input[type="date"]:hover::-webkit-calendar-picker-indicator { opacity:0.05; }
+input[type="date"]:hover::-webkit-calendar-picker-indicator:hover { opacity:0.15; }
