@@ -2,6 +2,7 @@ import React from 'react';
 import {HashRouter, Route, Switch, Redirect} from 'react-router-dom';
 import Header from './eduvanz/header'
 import HomePage from './eduvanz/home'
+import Admin from './eduvanz/admin'
 import './App.css';
 
 import {connect} from 'react-redux';
@@ -38,7 +39,7 @@ class App extends React.Component {
                         <Header/>
                         <Switch>
                             <Route path="/home:activeTab?" component={HomePage}/>
-                            {/*<Route path="/liveChart:activeTab?" component={WebSocket}/>*/}
+                            <Route path="/admin:activeTab?" component={Admin}/>
                             <Redirect to="/home"/>
                         </Switch>
                     </HashRouter>

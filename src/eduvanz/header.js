@@ -19,11 +19,9 @@ class Header extends React.Component {
                             <NavLink to={"/home"}>Home</NavLink>
                         </li>
                         <li>
-                            <NavLink to={"/liveChart"}> Live Chart</NavLink>
+                            <NavLink to={"/admin"}> Live Chart</NavLink>
                         </li>
-                        <li>
-                            <NavLink to={"/liveChart"}> Live Chart</NavLink>
-                        </li>
+
                     </ul>
                 </div>
             </div>

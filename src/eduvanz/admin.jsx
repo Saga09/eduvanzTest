@@ -5,158 +5,88 @@ import * as eduvanzAction from '../actions/eduvanz-actions';
 import * as hu from '../genralUtility'
 
 
-class Home extends React.Component {
+class Admin extends React.Component {
     constructor(props)
     {
         super(props);
         this.state = {
             form: {},
-            errors:[]
+            errors:[],
+            users: this.props.userDetails
 
         }
+        this.filterList = this.filterList.bind(this);
     }
-    validation(field, value) {
-        let errors = this.state.errors;
+    componentDidMount(){
+        this.props.dispatch(eduvanzAction.getUserDetailStatus())
+    }
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            users: nextProps.users
+        });
+    }
+    filterList(event) {
 
-        if(value != '' && value != undefined)
-        {
-            delete errors[field];
+        let users = this.state.users;
+        users = users.filter(function(user){
+            //unsure what to do here
+        });
+        this.setState({users: users});
+    }
+
+    handelSearch(e){
+        let value = e.target.value
+
+
+    }
+    getUserDetails(userDetails){
+        let userDetailsXml = []
+
+        console.log('userDetails---- ', userDetails);
+
+        for (let i in userDetails) {
+            userDetailsXml.push(
+                <tr>
+
+                    <td>{userDetails[i].id}</td>
+                    <td>{userDetails[i].full_name}</td>
+                    <td>{userDetails[i].age}</td>
+                    <td>{userDetails[i].dob}</td>
+                    <td>{userDetails[i].profession}</td>
+                    <td>{userDetails[i].locality}</td>
+                    <td>{userDetails[i].guest}</td>
+                </tr>
+            )
         }
-        else
-        {
-            errors[field] = "This field is required";
-
-        }
-        this.setState({errors: errors});
-    }
-
-    changeFormDetails(e, name){
-        let value = e.target.value;
-        let formField = this.state.form;
-        formField[name] = value;
-
-        this.setState({form: formField})
-        this.validation(name, value);
-        console.log('state ', this.state.form);
-    }
-    incrementValue = () => {
-        this.props.dispatch(eduvanzAction.incrementalGuest())
-        let count = this.props.guest;
-        let value = count;
-        let formField = this.state.form;
-        formField['guest'] = value;
-
-        this.setState({form: formField})
-
-    }
-    decreaseValue = () => {
-        this.props.dispatch(eduvanzAction.decrementalGuest())
-
-        let count = this.props.guest;
-        let value = count;
-        let formField = this.state.form;
-        formField['guest'] = value;
-
-        this.setState({form: formField})
-    }
-    handelSubmit(){
-        let errors = this.state.errors;
-        console.log('handelSubmit ', errors);
-
-        if (hu.isEmptyObject(errors)) {
-            console.log(true);
-        } else {
-            console.log(true);
-        }
+        return userDetailsXml
     }
 
     render() {
-        let formDetails = this.state.form;
-        let errors = this.state.errors;
-        let nameError = hu.safeReturn(errors, 'fullName', '');
-        let ageError = hu.safeReturn(errors, 'age', '');
-        let dobError = hu.safeReturn(errors, 'DOB', '');
-        let professionError = hu.safeReturn(errors, 'profession', '');
-        let localityError = hu.safeReturn(errors, 'locality', '');
-        let addressError = hu.safeReturn(errors, 'address', '');
+        let userDetails = this.props.userDetails;
 
-        console.log('error', this.state.errors);
+        let newAray = userDetails.findIndex(x => x.id === '2');
+        console.log('newarray ', newAray);
+
         return (
-            <div className="form">
-                <div className="form--wrapper">
-                    <div className="header-text">
-                        <h1>Booking Form</h1>
-                    </div>
-                    <div className="form--group">
-                        <label>Full Name</label>
-                        <input type="text" value={hu.safeReturn(formDetails, 'fullName', '')} onChange={(e) => this.changeFormDetails(e, "fullName")} />
-                        {
-                            nameError != '' &&
-                            <p>{nameError}</p>
-                        }
-                    </div>
-                    <div className="form--group">
-                        <label>Age</label>
-                        <input type="number" value={hu.safeReturn(formDetails, 'age', '')} onChange={(e) => this.changeFormDetails(e, "age")} />
-                        {
-                            ageError != '' &&
-                            <p>{nameError}</p>
-                        }
-                    </div>
-                    <div className="form--group">
-                        <label>D.O.B</label>
-                        <input type="date" onChange={(e) => this.changeFormDetails(e, "DOB")} value={hu.safeReturn(formDetails, 'DOB', '')} />
-                        {
-                            dobError != '' &&
-                            <p>{nameError}</p>
-                        }
-
-                    </div>
-                    <div className="form--group">
-                        <label>Profession</label>
-                        <div className="select-wrapper">
-                            <select value={hu.safeReturn(formDetails, 'profession', '')} className="select" onChange={(e) => this.changeFormDetails(e, "profession")}>
-                                <option value="Employed">Employed</option>
-                                <option value="Student">Student</option>
-                            </select>
-                        </div>
-
-                        {
-                            professionError != '' &&
-                            <p>{nameError}</p>
-                        }
-
-
-                    </div>
-                    <div className="form--group">
-                        <label>Locality</label>
-                        <input type="text" value={hu.safeReturn(formDetails, 'locality', '')} onChange={(e) => this.changeFormDetails(e, "locality")}  />
-                        {
-                            localityError != '' &&
-                            <p>{nameError}</p>
-                        }
-                    </div>
-                    <div className="form--group">
-                        <label>Number of Guests</label>
-                        <button onClick={this.decreaseValue}>-</button>
-                        <span>{this.props.guest}</span>
-                        <button onClick={this.incrementValue}>+</button>
-                    </div>
-                    <div className="form--group">
-                        <label>Address</label>
-                        <textarea value={hu.safeReturn(formDetails, 'address', '')} onChange={(e) => this.changeFormDetails(e, "address")} maxLength="50"></textarea>
-
-                        {
-                            addressError != '' &&
-                            <p>{nameError}</p>
-                        }
-                    </div>
-                    <div className="form--group">
-                        <span onClick={()=>this.handelSubmit()}>Submit</span>
-                    </div>
-
+            <div>
+                <div>
+                    <input type="text" onChange={(e)=> this.handelSearch(e)}/>
                 </div>
+                <div>
+                    <table>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>D.O.B</th>
+                            <th>Profession</th>
+                            <th>Locality</th>
+                            <th>No of Guests</th>
+                        </tr>
 
+                            {this.getUserDetails(userDetails)}
+                    </table>
+                </div>
             </div>
 
         )
@@ -166,10 +96,10 @@ class Home extends React.Component {
 
 const mapStateToProps = function (store) {
     return {
-        guest: store.eduvanzState.guest
+        userDetails: store.eduvanzState.userDetails
     }
 }
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps)(Admin);
 
 
