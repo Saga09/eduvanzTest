@@ -12,17 +12,23 @@ class Admin extends React.Component {
         this.state = {
             form: {},
             errors:[],
-            users: this.props.userDetails
+            users: [],
+            searchValue : ""
 
         }
         this.filterList = this.filterList.bind(this);
+        this.handelSearch = this.handelSearch.bind(this);
+        this.getUserDetails = this.getUserDetails.bind(this);
     }
     componentDidMount(){
-        this.props.dispatch(eduvanzAction.getUserDetailStatus())
+        this.setState({
+            users: this.props.userDetails
+        });
+        // this.props.dispatch(eduvanzAction.getUserDetailStatus())
     }
     componentWillReceiveProps(nextProps) {
         this.setState({
-            users: nextProps.users
+            users: nextProps.userDetails
         });
     }
     filterList(event) {
@@ -36,25 +42,47 @@ class Admin extends React.Component {
 
     handelSearch(e){
         let value = e.target.value
-
-
+        this.setState({searchValue:value})
     }
-    getUserDetails(userDetails){
-        let userDetailsXml = []
 
-        console.log('userDetails---- ', userDetails);
+
+    getAge(dateString) {
+        var today = new Date();
+        var birthDate = new Date(dateString);
+        var age = today.getFullYear() - birthDate.getFullYear();
+        var m = today.getMonth() - birthDate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        return age;
+    }
+
+    getUserDetails(){
+        let userDetails = this.state.users;
+        let userDetailsXml = [];
+
+        let searchValue = this.state.searchValue;
 
         for (let i in userDetails) {
-            userDetailsXml.push(
-                <tr>
 
+            let fullName = userDetails[i].full_name;
+            fullName = fullName.toLowerCase();
+            if((searchValue.length > 0) && !(fullName.includes(searchValue.toLowerCase())))
+            {
+                continue;
+            }
+
+
+            userDetailsXml.push(
+                <tr key={userDetails[i].id}>
                     <td>{userDetails[i].id}</td>
                     <td>{userDetails[i].full_name}</td>
-                    <td>{userDetails[i].age}</td>
+                    <td>{this.getAge(userDetails[i].dob)}</td>
                     <td>{userDetails[i].dob}</td>
                     <td>{userDetails[i].profession}</td>
                     <td>{userDetails[i].locality}</td>
-                    <td>{userDetails[i].guest}</td>
+                    <td>{userDetails[i].address}</td>
+                    {/*<td>{userDetails[i].guest}</td>*/}
                 </tr>
             )
         }
@@ -62,10 +90,10 @@ class Admin extends React.Component {
     }
 
     render() {
-        let userDetails = this.props.userDetails;
+        //    let userDetails = this.state.userDetails;
 
-        let newAray = userDetails.findIndex(x => x.id === '2');
-        console.log('newarray ', newAray);
+        //  let newAray = userDetails.findIndex(x => x.id === '2');
+        //console.log('newarray ', newAray);
 
         return (
             <div>
@@ -81,10 +109,10 @@ class Admin extends React.Component {
                             <th>D.O.B</th>
                             <th>Profession</th>
                             <th>Locality</th>
-                            <th>No of Guests</th>
+                            <th>Address</th>
                         </tr>
 
-                            {this.getUserDetails(userDetails)}
+                        {this.getUserDetails()}
                     </table>
                 </div>
             </div>
@@ -101,5 +129,4 @@ const mapStateToProps = function (store) {
 }
 
 export default connect(mapStateToProps)(Admin);
-
 
