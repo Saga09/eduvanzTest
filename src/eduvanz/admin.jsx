@@ -90,17 +90,12 @@ class Admin extends React.Component {
     }
 
     render() {
-        //    let userDetails = this.state.userDetails;
-
-        //  let newAray = userDetails.findIndex(x => x.id === '2');
-        //console.log('newarray ', newAray);
-
         return (
-            <div>
-                <div>
-                    <input type="text" onChange={(e)=> this.handelSearch(e)}/>
+            <div className="admin--panel">
+                <div className="search">
+                    <input type="text" placeholder="Search by name" onChange={(e)=> this.handelSearch(e)} />
                 </div>
-                <div>
+                <div className="user--details-table">
                     <table>
                         <tr>
                             <th>Id</th>

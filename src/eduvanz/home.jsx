@@ -89,33 +89,33 @@ class Home extends React.Component {
                     </div>
                     <div className="form--group">
                         <label>Full Name</label>
-                        <input type="text" value={hu.safeReturn(formDetails, 'fullName', '')} onChange={(e) => this.changeFormDetails(e, "fullName")} />
+                        <input type="text" className="form-textbox" value={hu.safeReturn(formDetails, 'fullName', '')} onChange={(e) => this.changeFormDetails(e, "fullName")} />
                         {
                             nameError != '' &&
-                            <p>{nameError}</p>
+                            <p className="error">{nameError}</p>
                         }
                     </div>
                     <div className="form--group">
                         <label>Age</label>
-                        <input type="number" value={hu.safeReturn(formDetails, 'age', '')} onChange={(e) => this.changeFormDetails(e, "age")} />
+                        <input type="number" className="form-textbox" value={hu.safeReturn(formDetails, 'age', '')} onChange={(e) => this.changeFormDetails(e, "age")} />
                         {
                             ageError != '' &&
-                            <p>{nameError}</p>
+                            <p className="error">{ageError}</p>
                         }
                     </div>
                     <div className="form--group">
                         <label>D.O.B</label>
-                        <input type="date" onChange={(e) => this.changeFormDetails(e, "DOB")} value={hu.safeReturn(formDetails, 'DOB', '')} />
+                        <input type="date" className="form-number-input form-textbox" onChange={(e) => this.changeFormDetails(e, "DOB")} value={hu.safeReturn(formDetails, 'DOB', '')} />
                         {
                             dobError != '' &&
-                            <p>{nameError}</p>
+                            <p className="error">{dobError}</p>
                         }
 
                     </div>
                     <div className="form--group">
                         <label>Profession</label>
                         <div className="select-wrapper">
-                            <select value={hu.safeReturn(formDetails, 'profession', '')} className="select" onChange={(e) => this.changeFormDetails(e, "profession")}>
+                            <select value={hu.safeReturn(formDetails, 'profession', '')} className="form-dropdown" onChange={(e) => this.changeFormDetails(e, "profession")}>
                                 <option value="Employed">Employed</option>
                                 <option value="Student">Student</option>
                             </select>
@@ -123,36 +123,38 @@ class Home extends React.Component {
 
                         {
                             professionError != '' &&
-                            <p>{nameError}</p>
+                            <p className="error">{professionError}</p>
                         }
 
 
                     </div>
                     <div className="form--group">
                         <label>Locality</label>
-                        <input type="text" value={hu.safeReturn(formDetails, 'locality', '')} onChange={(e) => this.changeFormDetails(e, "locality")}  />
+                        <input type="text" className="form-textbox" value={hu.safeReturn(formDetails, 'locality', '')} onChange={(e) => this.changeFormDetails(e, "locality")}  />
                         {
                             localityError != '' &&
-                            <p>{nameError}</p>
+                            <p className="error">{localityError}</p>
                         }
                     </div>
                     <div className="form--group">
                         <label>Number of Guests</label>
-                        <button onClick={this.decreaseValue}>-</button>
-                        <span>{this.props.guest}</span>
-                        <button onClick={this.incrementValue}>+</button>
+                        <div className="form-spinner-input">
+                            <button onClick={this.decreaseValue}>-</button>
+                            <span>{this.props.guest}</span>
+                            <button onClick={this.incrementValue}>+</button>
+                        </div>
                     </div>
                     <div className="form--group">
                         <label>Address</label>
-                        <textarea value={hu.safeReturn(formDetails, 'address', '')} onChange={(e) => this.changeFormDetails(e, "address")} maxLength="50"></textarea>
+                        <textarea className="form-textarea" value={hu.safeReturn(formDetails, 'address', '')} onChange={(e) => this.changeFormDetails(e, "address")} maxLength="50"></textarea>
 
                         {
                             addressError != '' &&
-                            <p>{nameError}</p>
+                            <p className="error">{addressError}</p>
                         }
                     </div>
-                    <div className="form--group">
-                        <span onClick={()=>this.handelSubmit()}>Submit</span>
+                    <div className="form--group submit--form">
+                        <span className="submit-button" onClick={()=>this.handelSubmit()}>Submit</span>
                     </div>
 
                 </div>

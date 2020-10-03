@@ -132,19 +132,23 @@ a:hover{-webkit-transition:all ease-out .15s;-moz-transition:all ease-out .15s;-
     -ms-flex-align: start;
     align-items: flex-start;
     margin: 0;
-    padding: 0 38px;
+    padding: 0 30px 39px;
     list-style: none;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
 }
 .header-text {
-    padding: 40px 52px;
+    padding: 20px 50px;
     /* font-family: "Inter", sans-serif; */
-    border-bottom: 1px solid #d7d8e1;
+    border-bottom: 1px solid #65555f;
+    width: 100%;
 }
-.header-text h1 {}
+.header-text h1 {
+    padding: 0;
+    margin: 0;
+}
 .form--group {
-    margin-top: 28px;
+    margin-top: 30px;
     text-align: left;
     width: 100%;
 }
@@ -155,7 +159,7 @@ a:hover{-webkit-transition:all ease-out .15s;-moz-transition:all ease-out .15s;-
 }
 .form--group input {
     background-color: #fff;
-    border: 1px solid #c3cad8;
+    border: 1px solid #8292a2 !important;
     color: #2c3345;
     font-size: 1em;
     border-radius: 4px;
@@ -163,6 +167,7 @@ a:hover{-webkit-transition:all ease-out .15s;-moz-transition:all ease-out .15s;-
     display: block;
     font-size: 16px;
     padding: 10px 10px;
+    width: 310px;
 }
 
 /*CSS For Customize Date Picker*/
@@ -170,10 +175,8 @@ input[type="date"] {
     display:block;
     position:relative;
     padding:1rem 3.5rem 1rem 0.75rem;
-
     font-size:1rem;
     font-family:monospace;
-
     border:1px solid #8292a2;
     border-radius:0.25rem;
     background:
@@ -182,8 +185,8 @@ input[type="date"] {
             right 1rem
             center
             no-repeat;
-
     cursor:pointer;
+    width: 262px;
 }
 input[type="date"]:focus {
     outline:none;
@@ -223,3 +226,157 @@ input[type="date"]:focus {
 
 input[type="date"]:hover::-webkit-calendar-picker-indicator { opacity:0.05; }
 input[type="date"]:hover::-webkit-calendar-picker-indicator:hover { opacity:0.15; }
+
+/*CSS For Admin Page*/
+.admin--panel {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #2c3345;
+    display: flex;
+    flex-direction: column;
+    margin: 20px auto;
+    width: 100%;
+    max-width: 80%;
+}
+.admin--panel .search {
+    padding: 20px 0 30px;
+}
+.admin--panel .search input {
+    font-size: 16px;
+    padding: 5px 10px;
+    background-color: #fff;
+    border: 1px solid #c3cad8;
+    color: #2c3345;
+    font-size: 1em;
+    border-radius: 4px;
+    border: 1px solid;
+    /* display: block; */
+    font-size: 16px;
+    padding: 10px 10px;
+    width: 300px;
+}
+.user--details-table {
+    padding: 0 30px 30px;
+}
+.user--details-table table {
+    border-collapse: collapse;
+    width: 100%;
+}
+.user--details-table table tr {
+    /* background-color: rgba(255,255,255,0.9); */
+}
+.user--details-table tr th {}
+.user--details-table tr th, .user--details-table table td  {
+    border: 1px solid #574c58;
+    padding: 8px;
+}
+.user--details-table tr td {
+    /* background-color: rgba(255,255,255,0.9); */
+    padding: 15px 5px;
+}
+
+.user--details-table tr:nth-child(even){background-color: #f2f2f2;}
+
+.user--details-table tr:hover {background-color: #ddd;}
+
+/*CSS For Custome Select*/
+.form-dropdown {
+    padding: 0 1.875em 0 .625em;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='10' height='6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%2357647E' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-position: right 10px bottom 50%;
+    background-size: .625em;
+    background-repeat: no-repeat;
+}
+
+.form-dropdown, .form-textarea, .form-textbox {
+    font-size: 1em;
+    border-radius: 4px;
+    border: 1px solid;
+    display: block;
+    /* min-width: 100%; */
+}
+.form-textbox {
+
+}
+.form-dropdown, .form-textarea, .form-textbox {
+    background-color: #fff;
+    /* border-color: #c3cad8; */
+    /* color: #2c3345; */
+    border: 1px solid #8292a2;
+}
+.form-dropdown, .form-textbox {
+    /* height: 24px; */
+}
+.form-dropdown {
+    /* font-weight: 300; */
+    height: 40px;
+    width: 332px;
+    border: 1px solid #8292a2;
+}
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.form-spinner-input {
+    width: 310px;
+    border: 1px solid #8292a2;
+    height: 40px;
+}
+.form-spinner-input span{
+    width: calc(100% - 74px);
+    display: inline-block;
+    text-align: center;
+    background-color: #fff;
+    /* height: 26px; */
+    vertical-align: middle;
+    padding: 11px 0 11px;
+    font-size: 16px;
+}
+.form-spinner-input button {}
+.form-spinner-input button {
+    background-color: #f4f4f7;
+    border: 0;
+    padding: 0 13px;
+    height: 40px;
+    font-size: 24px;
+    cursor: pointer;
+    vertical-align: middle;
+}
+.form-textarea {
+    height: 80px;
+    width: 80%;
+    padding: 15px;
+}
+.submit--form {
+    text-align: center;
+}
+.submit-button {
+    background-color: #18bd5b;
+    border-color: #18bd5b;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 3px;
+    width: 170px;
+    display: inline-block;
+    text-align: center;
+    margin: 0 auto;
+    cursor: pointer;
+}
+.submit-button:hover {
+    background-color: #16aa52;
+}
+p.error {
+    color: #fff;
+    background-color: #f23a3c;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='14' height='15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M7 14.515a7 7 0 110-14 7 7 0 010 14zm-.814-5.86h1.628v-5.21H6.186v5.21zM7 11.259a.82.82 0 00.814-.824A.816.816 0 007 9.631a.813.813 0 100 1.628z' fill='%23fff'/%3E%3C/svg%3E");
+    font-size: .75em;
+    margin-top: 5px;
+    border-radius: 4px;
+    background-size: 12px;
+    background-position: 4px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: auto;
+    padding: 5px 5px 5px 20px;
+}
