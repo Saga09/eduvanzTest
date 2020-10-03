@@ -4,6 +4,7 @@ import Header from './eduvanz/header'
 import HomePage from './eduvanz/home'
 import Admin from './eduvanz/admin'
 import User from './eduvanz/user'
+import Report from './eduvanz/report'
 import './App.css';
 
 import {connect} from 'react-redux';
@@ -42,6 +43,7 @@ class App extends React.Component {
                             <Route path="/home:activeTab?" component={HomePage}/>
                             <Route path="/admin:activeTab?" component={Admin}/>
                             <Route path="/user/:id?" component={User}/>
+                            <Route path="/report" component={Report}/>
                             <Redirect to="/home"/>
                         </Switch>
                     </HashRouter>

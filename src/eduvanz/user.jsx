@@ -34,7 +34,9 @@ class Admin extends React.Component {
             <div className="admin--panel user--details">
                 <ul>
                     <li><label>Full Name:</label> <span>{item.full_name}</span></li>
+                    <li><label>Age:</label> <span>{item.age}</span></li>
                     <li><label>Date Of Birth:</label> <span>{item.dob}</span></li>
+                    <li><label>Guest:</label> <span>{item.guest}</span></li>
                     <li><label>Locality:</label> <span>{item.locality}</span></li>
                     <li><label>Profession:</label> <span>{item.profession}</span></li>
                     <li><label>Address:</label> <span>{item.address}</span></li>
