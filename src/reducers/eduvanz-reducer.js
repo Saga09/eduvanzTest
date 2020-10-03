@@ -83,8 +83,8 @@ const initialState = {
             "locality": "Proletarskiy",
             "address": "1K5QA55BQJSJ51dHs2ypE8XVzaMriowFfY"
         }
-    ]
-
+    ],
+    user: {}
 };
 
 
@@ -95,7 +95,7 @@ const eduvanzReducer = function (state = initialState, action) {
         case actionType.DECREMENTAL_GUEST:
             return Object.assign({}, state, {guest: state.guest - 1});
         case actionType.GET_USER_DATA:
-            return Object.assign({}, state, {});
+            return Object.assign({}, state, {user: action.user});
     }
 
     return state

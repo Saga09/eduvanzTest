@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 import * as eduvanzAction from '../actions/eduvanz-actions';
 import * as hu from '../genralUtility'
-
+import {NavLink} from "react-router-dom";
 
 class Admin extends React.Component {
     constructor(props)
@@ -64,7 +64,7 @@ class Admin extends React.Component {
         let searchValue = this.state.searchValue;
 
         for (let i in userDetails) {
-
+            let id = userDetails[i].id
             let fullName = userDetails[i].full_name;
             fullName = fullName.toLowerCase();
             if((searchValue.length > 0) && !(fullName.includes(searchValue.toLowerCase())))
@@ -76,7 +76,7 @@ class Admin extends React.Component {
             userDetailsXml.push(
                 <tr key={userDetails[i].id}>
                     <td>{userDetails[i].id}</td>
-                    <td>{userDetails[i].full_name}</td>
+                    <td><NavLink to={"/user?=" + id}>{userDetails[i].full_name}</NavLink></td>
                     <td>{this.getAge(userDetails[i].dob)}</td>
                     <td>{userDetails[i].dob}</td>
                     <td>{userDetails[i].profession}</td>

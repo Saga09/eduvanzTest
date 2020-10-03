@@ -29,7 +29,15 @@ export function userDetails(data) {
     }
 }
 
-export function getUserDetailStatus()
+export function receivedUserDetails(userDetails)
+{
+    return {
+        type: actionTypes.GET_USER_DATA,
+        user: userDetails
+    }
+}
+
+export function getUserDetailStatus(formDetails)
 {
     return (dispatch, getState) => {
         const url = 'https://jsonplaceholder.typicode.com/todos/1';

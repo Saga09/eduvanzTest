@@ -37,7 +37,7 @@ class Home extends React.Component {
 
         this.setState({form: formField})
         this.validation(name, value);
-        console.log('state ', this.state.form);
+        //console.log('state ', this.state.form);
     }
     incrementValue = () => {
         this.props.dispatch(eduvanzAction.incrementalGuest())
@@ -59,14 +59,34 @@ class Home extends React.Component {
 
         this.setState({form: formField})
     }
-    handelSubmit(){
-        let errors = this.state.errors;
-        console.log('handelSubmit ', errors);
+    validateRequiredFields(){
+        let fieldsToValidate = ['fullName','age','DOB','profession','locality', 'address'];
+        let formDetails = this.state.form;
 
-        if (hu.isEmptyObject(errors)) {
-            console.log(true);
+        console.log('validation ', formDetails);
+        for(let i in fieldsToValidate)
+        {
+            let list = fieldsToValidate[i];
+            let value = hu.safeReturn(formDetails, list, '')
+
+            console.log('fieldsToValidate[i] ', fieldsToValidate[i]);
+            console.log('formDetails[i] ', formDetails[i]);
+            console.log('formDetails----- ', value);
+
+            this.validation(fieldsToValidate[i],value);
+        }
+
+    }
+    handelSubmit(){
+        this.validateRequiredFields()
+        let errors = this.state.errors;
+        let errorLength = Object.keys(errors).length;
+        let formDetails = this.state.form;
+
+        if (errorLength === 0 ) {
+            this.props.dispatch(eduvanzAction.receivedUserDetails(formDetails))
         } else {
-            console.log(true);
+            console.log(false);
         }
     }
 
@@ -80,7 +100,8 @@ class Home extends React.Component {
         let localityError = hu.safeReturn(errors, 'locality', '');
         let addressError = hu.safeReturn(errors, 'address', '');
 
-        console.log('error', this.state.errors);
+        console.log('user', this.props.user);
+
         return (
             <div className="form">
                 <div className="form--wrapper">
@@ -168,7 +189,8 @@ class Home extends React.Component {
 
 const mapStateToProps = function (store) {
     return {
-        guest: store.eduvanzState.guest
+        guest: store.eduvanzState.guest,
+        user: store.eduvanzState.user
     }
 }
 

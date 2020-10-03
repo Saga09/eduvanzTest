@@ -3,6 +3,7 @@ import {HashRouter, Route, Switch, Redirect} from 'react-router-dom';
 import Header from './eduvanz/header'
 import HomePage from './eduvanz/home'
 import Admin from './eduvanz/admin'
+import User from './eduvanz/user'
 import './App.css';
 
 import {connect} from 'react-redux';
@@ -40,6 +41,7 @@ class App extends React.Component {
                         <Switch>
                             <Route path="/home:activeTab?" component={HomePage}/>
                             <Route path="/admin:activeTab?" component={Admin}/>
+                            <Route path="/user/:id?" component={User}/>
                             <Redirect to="/home"/>
                         </Switch>
                     </HashRouter>
